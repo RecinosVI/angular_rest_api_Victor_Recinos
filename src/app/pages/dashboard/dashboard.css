@@ -1,0 +1,17 @@
+.dashboard { max-width: 1180px; margin: auto; padding: 58px 24px 80px; }
+.intro { text-align: center; margin-bottom: 42px; }
+.eyebrow { color: #5267c8; letter-spacing: .16em; font-size: .78rem; font-weight: 700; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; margin: 14px 0; }
+.intro p { color: #596277; font-size: 1.05rem; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 22px; }
+.universe-card { overflow: hidden; border-radius: 18px; display: flex; }
+.image-box { height: 210px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg,#edf1ff,#e3eaf7); }
+.image-box img { max-height: 92%; max-width: 90%; object-fit: contain; }
+mat-card-header { padding: 20px 20px 0; }
+mat-card-title { font-size: 1.25rem; font-weight: 700; }
+mat-card-content { padding: 12px 20px; flex: 1; }
+mat-card-content p { line-height: 1.6; color: #586276; }
+mat-card-actions { padding: 0 20px 22px; }
+mat-card-actions a { width: 100%; }
+@media(max-width: 1000px) { .cards { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media(max-width: 560px) { .dashboard { padding: 35px 16px; } .cards { grid-template-columns: 1fr; } }

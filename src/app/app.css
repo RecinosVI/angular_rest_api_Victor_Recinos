@@ -1,0 +1,7 @@
+.main-toolbar { min-height: 72px; height: auto; padding: 12px max(20px, calc((100vw - 1180px) / 2)); display: flex; gap: 24px; background: #171d32; color: white; flex-wrap: wrap; }
+.brand { color: white; text-decoration: none; font-weight: 700; font-size: 1.25rem; white-space: nowrap; }
+nav { display: flex; flex-wrap: wrap; gap: 4px; }
+nav a { color: #e8eaf6; }
+nav a.active { background: rgba(255,255,255,.15); }
+main { min-height: calc(100vh - 72px); }
+@media(max-width: 650px) { .main-toolbar { gap: 8px; padding: 12px; } nav a { font-size: 12px; padding: 0 8px; } }

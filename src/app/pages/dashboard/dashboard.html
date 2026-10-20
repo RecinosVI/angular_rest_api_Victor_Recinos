@@ -1,0 +1,17 @@
+<section class="dashboard">
+  <div class="intro">
+    <span class="eyebrow">EXPLORADOR DE PERSONAJES</span>
+    <h1>Explora tus universos favoritos</h1>
+    <p>Selecciona una categoría para conocer a sus personajes y descubrir más información.</p>
+  </div>
+  <div class="cards">
+    @for (section of sections; track section.route) {
+      <mat-card class="universe-card">
+        <div class="image-box"><img [src]="section.image" [alt]="'Imagen de ' + section.name" loading="lazy"></div>
+        <mat-card-header><mat-card-title>{{ section.name }}</mat-card-title></mat-card-header>
+        <mat-card-content><p>{{ section.description }}</p></mat-card-content>
+        <mat-card-actions><a mat-flat-button [routerLink]="section.route">Explorar personajes</a></mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</section>
