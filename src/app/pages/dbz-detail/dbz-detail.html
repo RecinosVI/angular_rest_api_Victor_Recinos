@@ -1,0 +1,34 @@
+<section class="detail-page">
+  <a mat-button routerLink="/dragon-ball">← Volver a Dragon Ball Z</a>
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando detalles...</p></div>
+  } @else if (error) {
+    <p>No fue posible cargar este personaje.</p>
+  } @else if (character; as item) {
+    <mat-card class="detail-card">
+      <img class="portrait" [src]="item.image" [alt]="item.name">
+      <mat-card-content>
+        <h1>{{ item.name }}</h1>
+        <p><strong>ID:</strong> {{ item.id }}</p>
+        @if (item.race) { <p><strong>Raza:</strong> {{ item.race }}</p> }
+        @if (item.gender) { <p><strong>Género:</strong> {{ item.gender }}</p> }
+        @if (item.affiliation) { <p><strong>Afiliación:</strong> {{ item.affiliation }}</p> }
+        @if (item.ki) { <p><strong>Ki:</strong> {{ item.ki }}</p> }
+        @if (item.maxKi) { <p><strong>Ki máximo:</strong> {{ item.maxKi }}</p> }
+        @if (item.description) { <h2>Descripción</h2><p>{{ item.description }}</p> }
+        @if (item.originPlanet; as planet) {
+          <h2>Planeta de origen</h2><p>{{ planet.name }}</p>
+          @if (planet.description) { <p>{{ planet.description }}</p> }
+        }
+        @if (item.transformations?.length) {
+          <h2>Transformaciones</h2>
+          <div class="transformations">
+            @for (form of item.transformations; track form.id) {
+              <div><img [src]="form.image" [alt]="form.name" loading="lazy"><p>{{ form.name }}</p>@if (form.ki) { <small>Ki: {{ form.ki }}</small> }</div>
+            }
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  }
+</section>

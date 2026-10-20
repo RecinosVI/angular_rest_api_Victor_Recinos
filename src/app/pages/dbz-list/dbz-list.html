@@ -1,0 +1,29 @@
+<section class="dbz-page">
+  <a mat-button routerLink="/">← Volver al inicio</a>
+  <h1>Personajes de Dragon Ball Z</h1>
+  <p>Selecciona la imagen para ampliarla o el resto de la tarjeta para ver los detalles.</p>
+
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando personajes...</p></div>
+  } @else if (error) {
+    <div class="status"><p>No se pudieron cargar los personajes.</p><button mat-flat-button (click)="load()">Reintentar</button></div>
+  } @else {
+    <div class="dbz-grid">
+      @for (character of characters; track character.id) {
+        <mat-card class="dbz-card" [routerLink]="['/dragon-ball', character.id]" tabindex="0">
+          <button class="image-button" type="button" (click)="$event.stopPropagation(); showImage(character)" [attr.aria-label]="'Ampliar imagen de ' + character.name">
+            <img [src]="character.image" [alt]="character.name" loading="lazy">
+          </button>
+          <mat-card-content>
+            <h2>{{ character.name }}</h2>
+            <p>ID: {{ character.id }}</p>
+            @if (character.race) { <p>Raza: {{ character.race }}</p> }
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  }
+  @if (!error) {
+    <mat-paginator [length]="total" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[8, 12, 24]" (page)="changePage($event)" aria-label="Páginas de Dragon Ball Z" />
+  }
+</section>
