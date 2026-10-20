@@ -1,7 +1,33 @@
-.main-toolbar { min-height: 72px; height: auto; padding: 12px max(20px, calc((100vw - 1180px) / 2)); display: flex; gap: 24px; background: #171d32; color: white; flex-wrap: wrap; }
-.brand { color: white; text-decoration: none; font-weight: 700; font-size: 1.25rem; white-space: nowrap; }
-nav { display: flex; flex-wrap: wrap; gap: 4px; }
-nav a { color: #e8eaf6; }
-nav a.active { background: rgba(255,255,255,.15); }
-main { min-height: calc(100vh - 72px); }
-@media(max-width: 650px) { .main-toolbar { gap: 8px; padding: 12px; } nav a { font-size: 12px; padding: 0 8px; } }
+/* Navegación estilo rústico: madera, cobre y pergamino */
+.main-toolbar {
+  min-height: 86px; height: auto;
+  padding: 14px max(18px, calc((100vw - 1180px) / 2));
+  display: flex; align-items: center; gap: 28px; flex-wrap: wrap;
+  background: repeating-linear-gradient(0deg, #38251c 0px, #442d20 5px, #352218 10px, #4b3021 15px);
+  border-top: 4px solid #a67a45;
+  border-bottom: 5px solid #8c6037;
+  box-shadow: 0 5px 14px rgba(35, 20, 12, .3);
+  color: #f7e5c6;
+}
+.brand {
+  color: #f7dfae; text-decoration: none; font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 800; font-size: 1.55rem; letter-spacing: .7px;
+  white-space: nowrap; text-shadow: 1px 2px 2px #170d08;
+}
+.brand::before { content: '✦'; color: #d6a45e; margin-right: 10px; }
+nav { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; }
+nav a[mat-button] {
+  color: #f5dfb9; font-weight: 600; font-family: Georgia, 'Times New Roman', serif;
+  border: 1px solid rgba(217, 174, 109, .4); border-radius: 5px;
+  background: rgba(27, 15, 10, .17); padding: 0 14px;
+  transition: background .2s ease, border-color .2s ease;
+}
+nav a[mat-button]:hover { background: #6b4931; border-color: #d5a66b; }
+nav a[mat-button].active { color: #fff1d2; background: #785234; border-color: #e0b97c; box-shadow: inset 0 0 0 1px #4b2b1c; }
+main { min-height: calc(100vh - 86px); }
+@media(max-width: 700px) {
+  .main-toolbar { gap: 12px; padding: 14px 12px; }
+  .brand { font-size: 1.25rem; }
+  nav { gap: 5px; }
+  nav a[mat-button] { font-size: 12px; padding: 0 9px; min-width: auto; }
+}

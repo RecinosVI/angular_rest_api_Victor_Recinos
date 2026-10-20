@@ -1,0 +1,30 @@
+<section class="detail-page">
+  <a mat-button routerLink="/pokemon">← Volver a Pokémon</a>
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando detalles...</p></div>
+  } @else if (error) {
+    <p>No fue posible cargar este Pokémon.</p>
+  } @else if (pokemon; as item) {
+    <mat-card class="detail-card">
+      <div class="portrait"><img [src]="imageOf(item)" [alt]="item.name"></div>
+      <mat-card-content>
+        <p class="number">Pokédex N.º {{ item.id }}</p>
+        <h1>{{ item.name }}</h1>
+        <p><strong>Tipos:</strong> @for (type of item.types; track type.slot) { <span class="chip">{{ type.type.name }}</span> }</p>
+        <p><strong>Altura:</strong> {{ item.height / 10 }} m</p>
+        <p><strong>Peso:</strong> {{ item.weight / 10 }} kg</p>
+        @if (item.base_experience !== null) { <p><strong>Experiencia base:</strong> {{ item.base_experience }}</p> }
+        @if (item.abilities.length) {
+          <h2>Habilidades</h2>
+          <div class="chips">@for (ability of item.abilities; track ability.ability.name) { <span class="chip">{{ ability.ability.name }} @if (ability.is_hidden) { (oculta) }</span> }</div>
+        }
+        @if (item.stats.length) {
+          <h2>Estadísticas</h2>
+          @for (stat of item.stats; track stat.stat.name) {
+            <div class="stat"><span>{{ stat.stat.name }}</span><strong>{{ stat.base_stat }}</strong></div>
+          }
+        }
+      </mat-card-content>
+    </mat-card>
+  }
+</section>

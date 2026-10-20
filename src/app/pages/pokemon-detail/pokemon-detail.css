@@ -1,0 +1,12 @@
+.detail-page { max-width: 1050px; margin: auto; padding: 30px 20px 60px; }
+.detail-card { display: grid; grid-template-columns: minmax(240px, 40%) 1fr; overflow: hidden; border: 2px solid #bb9870; background: #fff9ed; box-shadow: 5px 6px 0 #cbb398; }
+.portrait { background: #e9d8bc; display: grid; place-items: center; padding: 24px; }
+.portrait img { width: 100%; max-height: 400px; object-fit: contain; }
+mat-card-content { padding: 28px !important; }
+h1 { font: 700 2.5rem Georgia, serif; text-transform: capitalize; color: #55371e; margin: 8px 0 20px; }
+h2 { font: 700 1.4rem Georgia, serif; margin: 22px 0 12px; color: #68442c; }
+.number { color: #926e4e; }
+.chip { display: inline-block; background: #e5d0ac; color: #553b24; padding: 6px 11px; margin: 3px; border-radius: 5px; text-transform: capitalize; }
+.stat { display: flex; justify-content: space-between; border-bottom: 1px solid #dcc7ab; padding: 7px 0; text-transform: capitalize; }
+.status { display: grid; place-items: center; gap: 12px; padding: 70px; }
+@media(max-width: 700px) { .detail-card { grid-template-columns: 1fr; } }

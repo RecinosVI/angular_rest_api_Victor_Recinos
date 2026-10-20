@@ -1,0 +1,29 @@
+<section class="pokemon-page">
+  <a mat-button routerLink="/">← Volver al inicio</a>
+  <h1>Pokédex</h1>
+  <p>Selecciona la imagen para ampliarla o el resto de la tarjeta para conocer al Pokémon.</p>
+
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando Pokémon...</p></div>
+  } @else if (error) {
+    <div class="status"><p>No se pudieron cargar los Pokémon.</p><button mat-flat-button (click)="load()">Reintentar</button></div>
+  } @else {
+    <div class="pokemon-grid">
+      @for (item of pokemon; track item.url) {
+        <mat-card class="pokemon-card" [routerLink]="['/pokemon', idOf(item)]" tabindex="0">
+          <button class="image-button" type="button" (click)="$event.stopPropagation(); showImage(item)" [attr.aria-label]="'Ampliar imagen de ' + item.name">
+            <img [src]="imageOf(item)" [alt]="item.name" loading="lazy">
+          </button>
+          <mat-card-content>
+            <p class="number">N.º {{ idOf(item) }}</p>
+            <h2>{{ item.name }}</h2>
+            <span>Ver información →</span>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  }
+  @if (!error) {
+    <mat-paginator [length]="total" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[8, 12, 24]" (page)="changePage($event)" aria-label="Páginas de Pokémon" />
+  }
+</section>
