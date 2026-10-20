@@ -1,0 +1,23 @@
+<section class="digimon-page">
+  <a mat-button routerLink="/">← Volver al inicio</a>
+  <h1>Personajes de Digimon</h1>
+  <p>Explora los Digimon. Selecciona una imagen para ampliarla o una tarjeta para conocer sus datos.</p>
+
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando Digimon...</p></div>
+  } @else if (error) {
+    <div class="status"><p>No se pudieron cargar los Digimon. Comprueba tu conexión.</p><button mat-flat-button (click)="load()">Reintentar</button></div>
+  } @else {
+    <div class="digimon-grid">
+      @for (digimon of visibleDigimons; track digimon.name) {
+        <mat-card class="digimon-card" [routerLink]="['/digimon', digimon.name]" tabindex="0">
+          <button class="image-button" type="button" (click)="$event.stopPropagation(); showImage(digimon)" [attr.aria-label]="'Ampliar imagen de ' + digimon.name">
+            <img [src]="digimon.img" [alt]="digimon.name" loading="lazy">
+          </button>
+          <mat-card-content><h2>{{ digimon.name }}</h2><p>Nivel: {{ digimon.level }}</p></mat-card-content>
+        </mat-card>
+      }
+    </div>
+    <mat-paginator [length]="digimons.length" [pageIndex]="pageIndex" [pageSize]="pageSize" [pageSizeOptions]="[8, 12, 24]" (page)="changePage($event)" aria-label="Páginas de Digimon" />
+  }
+</section>

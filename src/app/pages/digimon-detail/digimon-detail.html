@@ -1,0 +1,16 @@
+<section class="detail-page">
+  <a mat-button routerLink="/digimon">← Volver a Digimon</a>
+  @if (loading) {
+    <div class="loading"><mat-spinner diameter="48" /></div>
+  } @else if (digimon) {
+    <mat-card class="detail-card">
+      <img [src]="digimon.img" [alt]="digimon.name">
+      <mat-card-content>
+        <h1>{{ digimon.name }}</h1>
+        <p><strong>Nivel:</strong> {{ digimon.level }}</p>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <p>No se encontró este Digimon o no se pudo consultar la API.</p>
+  }
+</section>
