@@ -1,11 +1,12 @@
-<mat-toolbar class="main-toolbar">
-  <a class="brand" routerLink="/">Universo API</a>
-  <nav aria-label="Navegación principal">
-    <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
-    <a mat-button routerLink="/digimon" routerLinkActive="active">Digimon</a>
-    <a mat-button routerLink="/dragon-ball" routerLinkActive="active">Dragon Ball Z</a>
-    <a mat-button routerLink="/pokemon" routerLinkActive="active">Pokémon</a>
-    <a mat-button routerLink="/demon-slayer" routerLinkActive="active">Demon Slayer</a>
-  </nav>
-</mat-toolbar>
-<main><router-outlet /></main>
+<div class="app-layout">
+  <mat-toolbar class="side-toolbar">
+    <nav aria-label="Navegación principal">
+      <a mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a mat-button routerLink="/digimon" routerLinkActive="active">Digimon</a>
+      <a mat-button routerLink="/dragon-ball" routerLinkActive="active">Dragon Ball Z</a>
+      <a mat-button routerLink="/pokemon" routerLinkActive="active">Pokémon</a>
+      <a mat-button routerLink="/demon-slayer" routerLinkActive="active">Demon Slayer</a>
+    </nav>
+  </mat-toolbar>
+  <main class="page-content"><router-outlet /></main>
+</div>

@@ -1,0 +1,24 @@
+<section class="detail-page">
+  <a mat-button routerLink="/demon-slayer">← Volver a Demon Slayer</a>
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando detalles...</p></div>
+  } @else if (error) {
+    <p>No fue posible cargar este personaje.</p>
+  } @else if (character; as item) {
+    <mat-card class="detail-card">
+      <img class="portrait" [src]="item.img" [alt]="item.name">
+      <mat-card-content>
+        <h1>{{ item.name }}</h1>
+        <p><strong>ID:</strong> {{ item.id }}</p>
+        @if (item.age) { <p><strong>Edad:</strong> {{ item.age }}</p> }
+        @if (item.gender) { <p><strong>Género:</strong> {{ item.gender }}</p> }
+        @if (item.race) { <p><strong>Raza:</strong> {{ item.race }}</p> }
+        @if (item.affiliation_id) { <p><strong>ID de afiliación:</strong> {{ item.affiliation_id }}</p> }
+        @if (item.arc_id) { <p><strong>ID de arco:</strong> {{ item.arc_id }}</p> }
+        @if (item.combat_style) { <p><strong>Estilo de combate:</strong> {{ item.combat_style }}</p> }
+        @if (item.description) { <h2>Descripción</h2><p>{{ item.description }}</p> }
+        @if (item.quote) { <h2>Frase</h2><p>{{ item.quote }}</p> }
+      </mat-card-content>
+    </mat-card>
+  }
+</section>

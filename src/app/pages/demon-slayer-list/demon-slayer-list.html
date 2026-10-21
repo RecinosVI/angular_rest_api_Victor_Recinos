@@ -1,0 +1,36 @@
+<section class="slayer-page">
+  <a mat-button routerLink="/">← Volver al inicio</a>
+  <h1>Personajes de Demon Slayer</h1>
+  <p>Selecciona una imagen para ampliarla o el resto de la tarjeta para ver los detalles.</p>
+
+  @if (loading) {
+    <div class="status"><mat-spinner diameter="48" /><p>Cargando personajes...</p></div>
+  } @else if (error) {
+    <div class="status"><p>No se pudieron cargar los personajes.</p><button mat-flat-button (click)="load()">Reintentar</button></div>
+  } @else {
+    <div class="slayer-grid">
+      @for (character of visibleCharacters; track character.id) {
+        <mat-card class="slayer-card" [routerLink]="['/demon-slayer', character.id]" tabindex="0">
+          <button class="image-button" type="button" (click)="$event.stopPropagation(); showImage(character)" [attr.aria-label]="'Ampliar imagen de ' + character.name">
+            <img [src]="character.img" [alt]="character.name" loading="lazy">
+          </button>
+          <mat-card-content>
+            <h2>{{ character.name }}</h2>
+            <p>ID: {{ character.id }}</p>
+            @if (character.race) { <p>Raza: {{ character.race }}</p> }
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+    
+      <mat-paginator
+        [length]="totalCharacters"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        [hidePageSize]="true"
+        (page)="changePage($event)">
+      </mat-paginator>
+
+    
+  }
+</section>

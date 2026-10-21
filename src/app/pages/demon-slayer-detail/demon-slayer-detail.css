@@ -1,0 +1,7 @@
+.detail-page { max-width: 1050px; margin: auto; padding: 26px 22px 50px; }
+.detail-card { margin-top: 20px; padding: 20px; display: flex; flex-direction: row; gap: 28px; background: #f9f1e5; border: 1px solid #b69a73; }
+.portrait { width: 40%; max-height: 560px; object-fit: contain; align-self: flex-start; }
+mat-card-content { flex: 1; min-width: 0; }
+h1, h2 { font-family: Georgia, serif; color: #513624; }
+.status { display: flex; align-items: center; flex-direction: column; padding: 50px 0; gap: 12px; }
+@media (max-width: 750px) { .detail-card { flex-direction: column; } .portrait { width: 100%; max-height: 360px; } }
